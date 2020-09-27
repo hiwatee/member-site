@@ -1,0 +1,60 @@
+openapi: 3.0.2
+info:
+    title: member-site
+    version: "1"
+    description: ""
+servers:
+    - url: "http://localhost:8000/{api_version}"
+      description: local server
+      variables:
+          api_version:
+              default: v1
+              enum:
+                  - v1
+components:
+    schemas:
+        User:
+            type: object
+            description: user
+            required:
+                - id
+                - email
+                - first_name
+                - last_name
+            properties:
+                id:
+                    type: integer
+                    description: user id
+                email:
+                    type: string
+                    format: email
+                    description: email address
+                first_name:
+                    type: string
+                    description: first name
+                last_name:
+                    type: string
+                    description: last name
+    securitySchemes: {}
+paths:
+    "/users/{user_id}": {}
+    /auth/:
+        post:
+            summary: ""
+            operationId: post-auth
+            responses:
+                "200":
+                    description: OK
+            description: ログイン用API
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                password:
+                                    type: string
+            tags:
+                - auth
