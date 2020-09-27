@@ -1,0 +1,4 @@
+NumericLiterals:
+  MinDigits: 5
+Layout/LineLength:
+  Max: 256
